@@ -9,8 +9,8 @@ const boardSlice = createSlice({
     initialState: InitialState,
     reducers: {
         addBoard(state, action) {
-            const {listId,listTitle} = action.payload;
-            state.list.push({id:listId,title:listTitle,cards:[]});
+            const {listId} = action.payload;
+            state.list.push({id:listId,todos:[]});
             // state.push(action.payload);
         },
         removeBoard(state, action) {
@@ -18,24 +18,27 @@ const boardSlice = createSlice({
             const listIndex = state.list.findIndex((list) => list.id === listId);
             state.list.splice(listIndex, 1);
         },
+        setBoard(state, action) {
+            state.list = action.payload;
+        },
         addCard(state, action) {
-            const {listId,cardId,cardTitle,cardDescription} = action.payload;
+            const {listId,cardId,cardDescription} = action.payload;
             const listIndex = state.list.findIndex((list) => list.id === listId);
-            state.list[listIndex].cards.push({id:cardId,columnid:listId,title:cardTitle,description:cardDescription});
+            state.list[listIndex].todos.push({id:cardId,columnid:listId,description:cardDescription});
         },
         updateCard(state, action) {
-            const {listId,cardId,cardTitle,cardDescription} = action.payload;
-            console.log(listId,cardId,cardTitle,cardDescription);
+            const {listId,cardId,cardDescription} = action.payload;
+            console.log(listId,cardId,cardDescription);
             const listIndex = state.list.findIndex((list) => list.id === listId);
             const cardIndex = state.list[listIndex].cards.findIndex((card) => card.id === cardId);
-            state.list[listIndex].cards[cardIndex].title = cardTitle;
-            state.list[listIndex].cards[cardIndex].description = cardDescription;
+            state.list[listIndex].todos[cardIndex].id = cardId;
+            state.list[listIndex].todos[cardIndex].description = cardDescription;
         }
     }
     
 });
 
-export const { addBoard, removeBoard,addCard,updateCard } = boardSlice.actions;
+export const { addBoard, removeBoard,setBoard,addCard,updateCard } = boardSlice.actions;
 
 
 export default boardSlice.reducer;

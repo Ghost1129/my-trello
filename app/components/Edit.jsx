@@ -3,12 +3,15 @@ import Image from 'next/image'
 import React, { useEffect } from 'react'
 import {motion} from 'framer-motion'
 import {useSelector,useDispatch} from 'react-redux'
-import { updateCard } from '../slices/boardSlice'
 import { toggleEdit } from '../slices/editSlice'
+import { ethers } from 'ethers'
+import contractAbi from '../contract_Abi.json'
+
 
 const Edit = () => {
     const menu = useSelector(state => state.edit)
-    console.log(menu)
+    
+    const address ="0xb59484Fc012d62E00036C779A9bd098c5F54f3ED"
     const [title,setTitle] = React.useState('')
     const [description,setDescription] = React.useState('')
     const dispatch = useDispatch()
@@ -20,17 +23,15 @@ const Edit = () => {
 
         }
     }
-    const handleUpdate = () => {
-        dispatch(updateCard({
-            cardTitle: title,
-            cardDescription: description,
-            listId: menu.listId,
-            cardId: menu.cardId,
-        }))
+    const handleUpdate = async() => {
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner()
+        const contract = new ethers.Contract(address,contractAbi,signer)
+        const data = await contract.updateTodo(menu.cardId,menu.listId,title,description)
+        console.log(data)
         setTitle('')
         setDescription('')
         dispatch(toggleEdit())
-        
     }
     useEffect(()=>{
         setTitle(menu.title)

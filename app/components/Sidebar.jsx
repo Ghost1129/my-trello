@@ -14,13 +14,16 @@ const Sidebar = () => {
         {
             name: 'Section1',
             icon: '/assets/sb2.svg',
+            icon2: '/assets/sb2w.svg',
 
         },{
             name: 'Section2',
             icon: '/assets/sb3.svg',
+            icon2: '/assets/sb3w.svg',
         },{
             name: 'Section3',
             icon: '/assets/sb4.svg',
+            icon2: '/assets/sb4w.svg',
         }
     ]
     const ulAnimation = {
@@ -60,7 +63,7 @@ const Sidebar = () => {
                 variants={ulAnimation}
                 initial='hidden'
                 animate='visible'
-                className='mt-3 mr-4 space-y-1'>
+                className='mt-3 mr-4 space-y-1 cursor-pointer'>
                 {Data.map((item, index) => {
                     return (
                         <motion.li variants={liAnimation}
@@ -77,7 +80,13 @@ const Sidebar = () => {
             })}
                 </motion.ul>
             </div>
-        <div className='w-full mb-3 '>
+        <motion.div
+        initial={{ opacity: 0,y: -20 }}
+        animate={{ opacity: 1,y: 0 }}
+        transition={{
+            duration: 0.5,
+        }}
+         className='w-full mb-3 '>
             <div className='flex w-full gap-2 mx-2'>
                 <div className='flex bg-[#353945] px-4 py-2 rounded-lg gap-2'>
                     <div className='flex items-center justify-center w-5 h-5 text-xs text-white rounded-full bg-primary '>N</div>
@@ -85,15 +94,21 @@ const Sidebar = () => {
                 </div>
                 <div className='bg-[#A3E3FF] px-4 py-2 font-semibold rounded-lg text-primary text-sm'>Buy 4XYZ</div>
             </div>
-            <div className='flex gap-4 mx-2 mt-4'>
+            <motion.div
+            initial={{ opacity: 0,y: -20 }}
+            animate={{ opacity: 1,y: 0 }}
+            transition={{
+                duration: 0.5,
+            }}
+             className='flex gap-4 mx-2 mt-4'>
                 <Image src='/assets/globe.svg' width={20} height={20} alt='globe' className='' />
                 <div className='flex items-center bg-[#353945] p-1 w-fit rounded-full gap-2'>
                     <Image src='/assets/night.svg' width={14} height={14} alt='icon' className='' />
                     <div className='h-[14px] w-[14px] bg-primary rounded-full'></div>
                 </div>
-            </div>
+            </motion.div>
 
-        </div>
+        </motion.div>
     </div>
   )
 }

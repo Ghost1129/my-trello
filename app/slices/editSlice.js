@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     edit: false,
-    title: "",
     description: "",
     listId: "",
     cardId: "",
+    title: "",
 };
 
 const editslice = createSlice({
@@ -16,11 +16,11 @@ const editslice = createSlice({
             state.edit = !state.edit;
         },
         editCard(state,action) {
-            const {Title,Description,listId,cardId} = action.payload;
+            const {Description,listId,cardId,cardTitle} = action.payload;
             state.listId = listId;
             state.cardId = cardId;
-            state.title = Title;
             state.description = Description;
+            state.title = cardTitle;
         }
 
 
