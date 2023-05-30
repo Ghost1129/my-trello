@@ -11,7 +11,6 @@ const Navbar = ({account,setAccount}) => {
   // Board List
   const board = useSelector(state => state.board)
   const dispatch = useDispatch()
-  const provider = new ethers.providers.Web3Provider(window.ethereum)
   const address = "0xb59484Fc012d62E00036C779A9bd098c5F54f3ED"
 
   useEffect(() => {
@@ -22,6 +21,7 @@ const Navbar = ({account,setAccount}) => {
 
 // Connect To Wallet
   async function connectWallet() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
     if(!provider) return alert('Please install metamask')
     const accounts = await provider.send('eth_requestAccounts', [])
     const balance = await provider.getBalance(accounts[0])
@@ -40,6 +40,7 @@ const Navbar = ({account,setAccount}) => {
 
 // Fetch Data From Blockchain
   async function fetchData() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
     const contract = new ethers.Contract(address,contractAbi,provider)
     if(account.address){
     const data = await contract.getTodos(account.address)

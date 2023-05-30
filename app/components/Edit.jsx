@@ -11,10 +11,6 @@ import contractAbi from '../contract_Abi.json'
 const Edit = () => {
     const menu = useSelector(state => state.edit)
     const address ="0xb59484Fc012d62E00036C779A9bd098c5F54f3ED"
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
-    const signer = provider.getSigner()
-    const contract = new ethers.Contract(address,contractAbi,signer)
-    
     const [title,setTitle] = React.useState('')
     const [description,setDescription] = React.useState('')
     const dispatch = useDispatch()
@@ -34,6 +30,9 @@ const Edit = () => {
 
     }
     const handleUpdate = async() => {
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner()
+        const contract = new ethers.Contract(address,contractAbi,signer)
         
         const data = await contract.updateTodo(menu.cardId,menu.listId,title,description)
         console.log(data)
@@ -42,6 +41,9 @@ const Edit = () => {
         handleEdit()
     }
     const handleDelete = async() => {
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner()
+        const contract = new ethers.Contract(address,contractAbi,signer)
         const data = await contract.deleteTodo(menu.cardId,menu.listId)
         handleEdit()
     }
