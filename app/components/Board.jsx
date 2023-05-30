@@ -14,8 +14,6 @@ const Board = () => {
     const [title,setTitle] = React.useState('')
     const address = "0xb59484Fc012d62E00036C779A9bd098c5F54f3ED"
 
-  
-
 // handleAdd
     const handleAdd = () => {
         if(title === '') {
@@ -27,7 +25,6 @@ const Board = () => {
     }
     }
 
-    
 // Function to add list to blockchain
     const addList = async (id) => {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -41,8 +38,6 @@ const Board = () => {
         
          setTitle(e.target.value)
    }
-
-
 
   return (
     <div className='relative w-full h-[90%]'>

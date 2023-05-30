@@ -44,6 +44,9 @@ const List = ({list}) => {
             setDescription('')
         }
     }
+
+
+    // Variants
     const ListVariants={
         initial:{
             opacity:0,

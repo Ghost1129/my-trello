@@ -13,12 +13,6 @@ const Navbar = ({account,setAccount}) => {
   const dispatch = useDispatch()
   const address = "0xb59484Fc012d62E00036C779A9bd098c5F54f3ED"
 
-  useEffect(() => {
-    connectWallet()
-  }, [])
-
- 
-
 // Connect To Wallet
   async function connectWallet() {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -32,11 +26,6 @@ const Navbar = ({account,setAccount}) => {
       fetchData()
     }
   }
-  useEffect(() => {
-    
-    fetchData()
-
-  }, [account,board])
 
 // Fetch Data From Blockchain
   async function fetchData() {
@@ -47,6 +36,14 @@ const Navbar = ({account,setAccount}) => {
     dispatch(setBoard(data))
     }
   }
+
+  useEffect(() => {
+    connectWallet()
+  }, [])
+  useEffect(() => {
+    fetchData()
+  }, [account,board])
+
  
   return (
     // Navbar

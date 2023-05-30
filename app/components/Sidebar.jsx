@@ -26,6 +26,8 @@ const Sidebar = () => {
             icon2: '/assets/sb4w.svg',
         }
     ]
+
+    // Variants
     const ulAnimation = {
         hidden: { opacity: 0 },
         visible: { opacity: 1 },

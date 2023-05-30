@@ -14,21 +14,14 @@ const Edit = () => {
     const [title,setTitle] = React.useState('')
     const [description,setDescription] = React.useState('')
     const dispatch = useDispatch()
-    const collapseAnimation = {
-        open: { x: '0%',opacity: 1 },
-        closed: { x: '100%',opacity: 0},
-        transition:{
-            duration: 1,
-
-        }
-    }
+   
     const handleEdit = () => {
         dispatch(editCard({
             Description:'',listId:'',cardId:'',cardTitle:''
         }))
         dispatch(toggleEdit())
-
     }
+
     const handleUpdate = async() => {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner()
@@ -40,6 +33,7 @@ const Edit = () => {
         setDescription('')
         handleEdit()
     }
+    
     const handleDelete = async() => {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner()
@@ -52,6 +46,17 @@ const Edit = () => {
         setTitle(menu.title)
         setDescription(menu.description)
     },[menu])
+
+    // Animation
+
+    const collapseAnimation = {
+        open: { x: '0%',opacity: 1 },
+        closed: { x: '100%',opacity: 0},
+        transition:{
+            duration: 1,
+
+        }
+    }
     
 
   return (
