@@ -53,12 +53,13 @@ const Sidebar = () => {
                 staggerChildren: 0.3,
             }}
              className='flex justify-between w-full gap-2 px-3'>
-                <div className='flex gap-2'>
+                <div className='flex gap-2 cursor-pointer'>
                     <div className='flex items-center justify-center font-bold text-white rounded-full h-7 w-7 bg-primary '>N</div>
                     <span className='text-2xl font-semibold font-poppins'>Name</span>
                 </div>
-                <Image src='/assets/arrow.svg' width={40} height={40} alt='leftarrow' className='mr-2' />
+                <Image src='/assets/arrow.svg' width={40} height={40} alt='leftarrow' className='mr-2 cursor-pointer' />
             </motion.div>
+            {/* Sidebar Contents */}
             <motion.ul
                 variants={ulAnimation}
                 initial='hidden'
@@ -80,6 +81,7 @@ const Sidebar = () => {
             })}
                 </motion.ul>
             </div>
+        {/* Sidebar Footer */}
         <motion.div
         initial={{ opacity: 0,y: -20 }}
         animate={{ opacity: 1,y: 0 }}
@@ -88,11 +90,11 @@ const Sidebar = () => {
         }}
          className='w-full mb-3 '>
             <div className='flex w-full gap-2 mx-2'>
-                <div className='flex bg-[#353945] px-4 py-2 rounded-lg gap-2'>
+                <div className='flex bg-[#353945] px-4 py-2 rounded-lg gap-2 cursor-pointer'>
                     <div className='flex items-center justify-center w-5 h-5 text-xs text-white rounded-full bg-primary '>N</div>
                     <div className='text-sm font-semibold'>$0.90</div>
                 </div>
-                <div className='bg-[#A3E3FF] px-4 py-2 font-semibold rounded-lg text-primary text-sm'>Buy 4XYZ</div>
+                <div className='bg-[#A3E3FF] px-4 py-2 font-semibold rounded-lg text-primary cursor-pointer text-sm'>Buy 4XYZ</div>
             </div>
             <motion.div
             initial={{ opacity: 0,y: -20 }}
@@ -101,8 +103,8 @@ const Sidebar = () => {
                 duration: 0.5,
             }}
              className='flex gap-4 mx-2 mt-4'>
-                <Image src='/assets/globe.svg' width={20} height={20} alt='globe' className='' />
-                <div className='flex items-center bg-[#353945] p-1 w-fit rounded-full gap-2'>
+                <Image src='/assets/globe.svg' width={20} height={20} alt='globe' className='cursor-pointer' />
+                <div className='flex items-center bg-[#353945] p-1 w-fit rounded-full gap-2 cursor-pointer'>
                     <Image src='/assets/night.svg' width={14} height={14} alt='icon' className='' />
                     <div className='h-[14px] w-[14px] bg-primary rounded-full'></div>
                 </div>

@@ -33,7 +33,8 @@ const boardSlice = createSlice({
             const cardIndex = state.list[listIndex].cards.findIndex((card) => card.id === cardId);
             state.list[listIndex].todos[cardIndex].id = cardId;
             state.list[listIndex].todos[cardIndex].description = cardDescription;
-        }
+        },
+
     }
     
 });
